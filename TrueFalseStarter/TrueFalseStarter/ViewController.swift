@@ -20,17 +20,19 @@ class ViewController: UIViewController {
     var gameSound: SystemSoundID = 0
     
     let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
+        ["Question": "Lorem Ipsum is simply dummy text of the printing and text ever since the 1500s, when an unknown printer. It has survived not only five centuries?", "Answer": "False"],
+        ["Question": "Lorem Ipsum is simply dummy text of the printing and text ever since the 1500s, when an unknown printer. It has survived not only five centuries?", "Answer": "True"],
+        ["Question": "Lorem Ipsum is simply dummy text of the printing and text ever since the 1500s, when an unknown printer. It has survived not only five centuries?", "Answer": "False"],
+        ["Question": "Lorem Ipsum is simply dummy text of the printing and text ever since the 1500s, when an unknown printer. It has survived not only five centuries?", "Answer": "True"]
     ]
     
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-    
+    @IBOutlet weak var option1Button: UIButton!
+    @IBOutlet weak var option2Button: UIButton!
+    @IBOutlet weak var option3Button: UIButton!
+    @IBOutlet weak var option4Button: UIButton!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +56,11 @@ class ViewController: UIViewController {
     
     func displayScore() {
         // Hide the answer buttons
-        trueButton.hidden = true
-        falseButton.hidden = true
-        
+        option1Button.hidden = true
+        option2Button.hidden = true
+        option3Button.hidden = true
+        option4Button.hidden = true
+
         // Display play again button
         playAgainButton.hidden = false
         
@@ -71,7 +75,7 @@ class ViewController: UIViewController {
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict["Answer"]
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+        if (sender === option1Button &&  correctAnswer == "True") || (sender === option2Button && correctAnswer == "False") {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
@@ -93,9 +97,11 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        trueButton.hidden = false
-        falseButton.hidden = false
-        
+        option1Button.hidden = false
+        option2Button.hidden = false
+        option3Button.hidden = false
+        option4Button.hidden = false
+
         questionsAsked = 0
         correctQuestions = 0
         nextRound()
