@@ -1,0 +1,172 @@
+//
+//  DataCollection.swift
+//  TrueFalseStarter
+//
+//  Created by Martin Wilter on 6/28/16.
+//  Copyright © 2016 Treehouse. All rights reserved.
+//
+
+let trivia: [[String : String]] = [
+
+    ["Question": "Q00 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q01 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q02 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q03 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q04 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q05 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q06 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q07 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q08 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q09 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q10 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q11 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q12 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q13 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q14 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q15 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q16 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"],
+
+    ["Question": "Q17 - What is the firstname of the King of Norway",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Harald",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q18 - What is the tallest mountain in Norway?",
+        "Option1": "Fanaråken",
+        "Option2": "Glittertind",
+        "Option3": "Storehorn",
+        "Option4": "Gallhøpiggen",
+        "Answer": "Gallhøpiggen",
+        "Image": "olav.jpg"],
+
+    ["Question": "Q19 - What is the name of Norway's prime minister ",
+        "Option1": "Harald",
+        "Option2": "Olav",
+        "Option3": "Jens",
+        "Option4": "Bjorn",
+        "Answer": "Jens",
+        "Image": "jens.jpg"]
+    
+]
+
