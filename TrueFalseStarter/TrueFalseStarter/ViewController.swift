@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GameKit
 import AudioToolbox
 
 class ViewController: UIViewController {
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
     }
 
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextIntWithUpperBound(trivia.count)
+        indexOfSelectedQuestion = randomIntWithUpperBound(trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary["Question"]
         playAgainButton.hidden = true
