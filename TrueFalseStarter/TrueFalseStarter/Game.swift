@@ -6,7 +6,7 @@
 //  Copyright © 2016 Treehouse. All rights reserved.
 //
 
-let questionsPerRound = 5
+let questionsPerRound = 10
 var questionsAsked = 0
 var correctQuestions = 0
 
