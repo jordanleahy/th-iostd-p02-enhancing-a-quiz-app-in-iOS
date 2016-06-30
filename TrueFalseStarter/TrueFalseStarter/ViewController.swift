@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         case gameOver
     }
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var option1Button: UIButton!
@@ -49,6 +50,7 @@ class ViewController: UIViewController {
         option2Button.setTitle(gameQuestions.first?.option2, forState: .Normal)
         option3Button.setTitle(gameQuestions.first?.option3, forState: .Normal)
         option4Button.setTitle(gameQuestions.first?.option4, forState: .Normal)
+        backgroundImage.image = UIImage(named: "Images/\((gameQuestions.first?.image)!)")
 
         configureUIForGameState(.playerWillAnswerQuestion)
     }
