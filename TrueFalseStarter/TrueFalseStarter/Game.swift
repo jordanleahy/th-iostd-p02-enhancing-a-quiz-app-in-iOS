@@ -6,14 +6,14 @@
 //  Copyright © 2016 Treehouse. All rights reserved.
 //
 
-let questionsPerRound = 10
-var questionsAsked = 0
+let questionsPerRound = 4
+var questionsAnswered = 0
 var correctQuestions = 0
 
 func createGame() {
     print("createGame() | Game.swift")
 
-    questionsAsked = 0
+    questionsAnswered = 0
     correctQuestions = 0
 
     createQuestionGroup()
@@ -21,18 +21,20 @@ func createGame() {
 
 }
 
-func checkSubmittedAnswer(submittedAnswer: String) -> Bool {
+func checkSubmittedAnswer(submittedAnswer: String) -> (success: Bool, correctAnswer: String) {
     print("checkSubmittedAnswer() | Game.swift")
 
-    questionsAsked += 1
+    questionsAnswered += 1
 
-    if submittedAnswer == gameQuestions.first?.answer {
+    let correctAnswer = (gameQuestions.first?.answer)!
+
+    if submittedAnswer == correctAnswer {
         correctQuestions += 1
         gameQuestions.removeFirst()
-        return true
+        return (true, correctAnswer)
     } else {
         gameQuestions.removeFirst()
-        return false
+        return (false, correctAnswer)
     }
 
 }

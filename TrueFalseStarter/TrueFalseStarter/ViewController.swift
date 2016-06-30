@@ -18,7 +18,12 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var questionField: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerHeaderLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var option1Button: UIButton!
     @IBOutlet weak var option2Button: UIButton!
@@ -35,7 +40,7 @@ class ViewController: UIViewController {
     func playGame() {
         print("playGame() | ViewController.swift")
 
-        guard questionsAsked != questionsPerRound else {
+        guard questionsAnswered != questionsPerRound else {
             displayScore()
             return
         }
@@ -45,7 +50,7 @@ class ViewController: UIViewController {
     func displayQuestion() {
         print("displayQuestion() | ViewController.swift")
 
-        questionField.text = gameQuestions.first?.question
+        questionLabel.text = gameQuestions.first?.question
         option1Button.setTitle(gameQuestions.first?.option1, forState: .Normal)
         option2Button.setTitle(gameQuestions.first?.option2, forState: .Normal)
         option3Button.setTitle(gameQuestions.first?.option3, forState: .Normal)
@@ -55,10 +60,14 @@ class ViewController: UIViewController {
         configureUIForGameState(.playerWillAnswerQuestion)
     }
 
+    func displayAnswer() {
+
+    }
+
     func displayScore() {
         print("displayScore() | ViewController.swift")
 
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionLabel.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
 
         configureUIForGameState(.gameOver)
         print("GAME OVER\n")
@@ -68,11 +77,16 @@ class ViewController: UIViewController {
         print("checkAnswer() | ViewController.swift")
 
         let submittedAnswer = sender.currentTitle!
+        let resultFromCheckedSubmittedAnswer = checkSubmittedAnswer(submittedAnswer)
 
-        if checkSubmittedAnswer(submittedAnswer) {
-            questionField.text = "Correct!"
+        if resultFromCheckedSubmittedAnswer.success {
+            answerHeaderLabel.text = "Correct!"
+            answerHeaderLabel.textColor = hexStringToUIColor("#0C7996")
+            answerLabel.text = "Nice job, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         } else {
-            questionField.text = "Wrong!"
+            answerHeaderLabel.text = "Wrong!"
+            answerHeaderLabel.textColor = hexStringToUIColor("#FFA269")
+            answerLabel.text = "Actually, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         }
 
         continueGameWithDelay(seconds: 2)
@@ -105,6 +119,9 @@ extension ViewController {
             option3Button.hidden = false
             option4Button.hidden = false
             playAgainButton.hidden = true
+            questionLabel.hidden = false
+            answerHeaderLabel.hidden = true
+            answerLabel.hidden = true
         case .playerDidAnswerQuestion:
             option1Button.hidden = true
             option2Button.hidden = true
@@ -115,6 +132,9 @@ extension ViewController {
             option2Button.setTitle(nil, forState: .Normal)
             option3Button.setTitle(nil, forState: .Normal)
             option4Button.setTitle(nil, forState: .Normal)
+            questionLabel.hidden = true
+            answerHeaderLabel.hidden = false
+            answerLabel.hidden = false
         case .gameOver:
             option1Button.hidden = true
             option2Button.hidden = true
