@@ -10,31 +10,47 @@ import UIKit
 
 class ViewController: UIViewController {
 
-
+    // Game states
     enum GameStates {
         case playerWillAnswerQuestion
         case playerDidAnswerQuestion
         case gameOver
     }
 
-    @IBOutlet weak var backgroundImage: UIImageView!
+    // Text
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerHeaderLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
 
+    // Buttons
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var option1Button: UIButton!
     @IBOutlet weak var option2Button: UIButton!
     @IBOutlet weak var option3Button: UIButton!
     @IBOutlet weak var option4Button: UIButton!
 
+    // Background
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var gradient: UIView!
+    let gradientLayer = CAGradientLayer()
+
 
     override func viewDidLoad() {
         loadGameStartSound()
         createGame()
         playGame()
+    }
+
+    override func viewWillLayoutSubviews() {
+        print("viewWillLayoutSubviews() | ViewController.swift")
+
+        // Adds gradient layer for improved text readability
+        gradientLayer.colors = [(hexStringToUIColor("#000000", alpha: 0.9)).CGColor, UIColor.clearColor().CGColor]
+        gradientLayer.locations = [0.0, 0.3]
+        gradientLayer.frame = self.view.bounds
+        gradient.layer.addSublayer(gradientLayer)
     }
 
     func playGame() {
