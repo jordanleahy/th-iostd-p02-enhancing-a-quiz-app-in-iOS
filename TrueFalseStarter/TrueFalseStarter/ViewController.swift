@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     // Game states
     enum GameStates {
+        case playeDidReceiveQuestion
         case playerWillAnswerQuestion
         case playerDidAnswerQuestion
         case gameOver
@@ -79,7 +80,9 @@ class ViewController: UIViewController {
         option4Button.setTitle(gameQuestions.first?.option4, forState: .Normal)
         backgroundImage.image = UIImage(named: "Images/\((gameQuestions.first?.image)!)")
 
-        configureUIForGameState(.playerWillAnswerQuestion)
+        configureUIForGameState(.playeDidReceiveQuestion)
+        continueGameWithDelay(seconds: 5, sender: "displayQuestion")
+
     }
 
     // TODO: Refactor?
@@ -137,7 +140,7 @@ class ViewController: UIViewController {
             feedbackBodyLabel.text = "Actually, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         }
 
-        continueGameWithDelay(seconds: 2)
+        continueGameWithDelay(seconds: 2, sender: "checkAnswer")
         configureUIForGameState(.playerDidAnswerQuestion)
     }
 
@@ -162,16 +165,28 @@ extension ViewController {
 
         // Set UI elements' state for current game state
         switch gameState {
+        case .playeDidReceiveQuestion:
+            questionLabel.hidden = false
+            feedbackHeaderLabel.hidden = true
+            feedbackBodyLabel.hidden = true
+            option1Button.hidden = true
+            option2Button.hidden = true
+            option3Button.hidden = true
+            option4Button.hidden = true
+            playAgainButton.hidden = true
         case .playerWillAnswerQuestion:
+            questionLabel.hidden = false
+            feedbackHeaderLabel.hidden = true
+            feedbackBodyLabel.hidden = true
             option1Button.hidden = false
             option2Button.hidden = false
             option3Button.hidden = false
             option4Button.hidden = false
             playAgainButton.hidden = true
-            questionLabel.hidden = false
-            feedbackHeaderLabel.hidden = true
-            feedbackBodyLabel.hidden = true
         case .playerDidAnswerQuestion:
+            questionLabel.hidden = true
+            feedbackHeaderLabel.hidden = false
+            feedbackBodyLabel.hidden = false
             option1Button.hidden = true
             option2Button.hidden = true
             option3Button.hidden = true
@@ -181,23 +196,20 @@ extension ViewController {
             option2Button.setTitle(nil, forState: .Normal)
             option3Button.setTitle(nil, forState: .Normal)
             option4Button.setTitle(nil, forState: .Normal)
+        case .gameOver:
             questionLabel.hidden = true
             feedbackHeaderLabel.hidden = false
             feedbackBodyLabel.hidden = false
-        case .gameOver:
             option1Button.hidden = true
             option2Button.hidden = true
             option3Button.hidden = true
             option4Button.hidden = true
             playAgainButton.hidden = false
-            questionLabel.hidden = true
-            feedbackHeaderLabel.hidden = false
-            feedbackBodyLabel.hidden = false
         }
     }
 
     // Delays execution 'to create smoother flow'
-    func continueGameWithDelay(seconds seconds: Int) {
+    func continueGameWithDelay(seconds seconds: Int, sender: String) {
         print("continueGameWithDelay() | ViewController.swift")
 
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
@@ -208,7 +220,12 @@ extension ViewController {
 
         // Executes the nextRound method at the dispatch time on the main queue
         dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            self.playGame()
+            if sender == "checkAnswer" {
+                self.playGame()
+            }
+            if sender == "displayQuestion" {
+                self.configureUIForGameState(.playerWillAnswerQuestion)
+            }
         }
     }
     
