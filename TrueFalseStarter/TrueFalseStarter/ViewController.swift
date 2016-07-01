@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
 
     // Text
-    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var feedbackHeaderLabel: UILabel!
@@ -54,18 +54,24 @@ class ViewController: UIViewController {
         gradient.layer.addSublayer(gradientLayer)
     }
 
+
     func playGame() {
         print("playGame() | ViewController.swift")
 
-        guard questionsAnswered != questionsPerRound else {
+        guard numberOfQuestionsAsked != questionsPerRound else {
+            progressLabel.text = "Game Over"
             displayScore()
             return
         }
+            numberOfQuestionsAsked += 1
+            progressLabel.text = "Question \(numberOfQuestionsAsked) of \(questionsPerRound)"
+
             displayQuestion()
     }
 
     func displayQuestion() {
         print("displayQuestion() | ViewController.swift")
+
 
         questionLabel.text = gameQuestions.first?.question
         option1Button.setTitle(gameQuestions.first?.option1, forState: .Normal)
@@ -139,7 +145,8 @@ class ViewController: UIViewController {
         print("playAgain() | ViewController.swift")
 
         createGame()
-        displayQuestion()
+        playGame()
+        //displayQuestion()
     }
 
 }

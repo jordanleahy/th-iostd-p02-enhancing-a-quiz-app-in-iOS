@@ -7,13 +7,13 @@
 //
 
 let questionsPerRound = 4
-var questionsAnswered = 0
+var numberOfQuestionsAsked = 0
 var correctQuestions = 0
 
 func createGame() {
     print("createGame() | Game.swift")
 
-    questionsAnswered = 0
+    numberOfQuestionsAsked = 0
     correctQuestions = 0
 
     createQuestionGroup()
@@ -24,7 +24,7 @@ func createGame() {
 func checkSubmittedAnswer(submittedAnswer: String) -> (success: Bool, correctAnswer: String) {
     print("checkSubmittedAnswer() | Game.swift")
 
-    questionsAnswered += 1
+    //numberOfQuestionsAsked += 1
 
     let correctAnswer = (gameQuestions.first?.answer)!
 
