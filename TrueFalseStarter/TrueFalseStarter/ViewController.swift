@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var answerHeaderLabel: UILabel!
-    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var feedbackHeaderLabel: UILabel!
+    @IBOutlet weak var feedbackBodyLabel: UILabel!
 
     // Buttons
     @IBOutlet weak var playAgainButton: UIButton!
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
 
 
     override func viewDidLoad() {
+        questionLabel.enabled = true // TODO: Delete and change initial state in IB
         loadGameStartSound()
         createGame()
         playGame()
@@ -76,6 +77,7 @@ class ViewController: UIViewController {
         configureUIForGameState(.playerWillAnswerQuestion)
     }
 
+    // TODO: Refactor?
     func displayAnswer() {
 
     }
@@ -83,12 +85,36 @@ class ViewController: UIViewController {
     func displayScore() {
         print("displayScore() | ViewController.swift")
 
-        questionLabel.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        let numberOfQuestionsAnswered = Double(questionsPerRound)
+        let numberOfCorrectAnswers = Double(correctQuestions)
+
+        if numberOfCorrectAnswers == 0 {
+            // 0% correct
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#FFA269")
+            feedbackHeaderLabel.text = "Bummer!"
+            feedbackBodyLabel.text = "You had no correct answers!"
+        } else if numberOfCorrectAnswers / numberOfQuestionsAnswered <= 0.5 {
+            // 50% correct or less
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#FFA269")
+            feedbackHeaderLabel.text = "Try again"
+            feedbackBodyLabel.text = "You only got \(correctQuestions) out of \(questionsPerRound) correct..."
+        } else if numberOfCorrectAnswers != numberOfQuestionsAnswered {
+            // More than 50% correct
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#0C7996")
+            feedbackHeaderLabel.text = "Way to go!"
+            feedbackBodyLabel.text = "You got \(correctQuestions) out of \(questionsPerRound) correct!"
+        } else {
+            // 100% correct
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#0C7996")
+            feedbackHeaderLabel.text = "Amazing!"
+            feedbackBodyLabel.text = "You got all answers correct!"
+        }
 
         configureUIForGameState(.gameOver)
         print("GAME OVER\n")
     }
 
+    // TODO: Refactor?
     @IBAction func checkAnswer(sender: UIButton) {
         print("checkAnswer() | ViewController.swift")
 
@@ -96,13 +122,13 @@ class ViewController: UIViewController {
         let resultFromCheckedSubmittedAnswer = checkSubmittedAnswer(submittedAnswer)
 
         if resultFromCheckedSubmittedAnswer.success {
-            answerHeaderLabel.text = "Correct!"
-            answerHeaderLabel.textColor = hexStringToUIColor("#0C7996")
-            answerLabel.text = "Nice job, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#0C7996")
+            feedbackHeaderLabel.text = "Correct!"
+            feedbackBodyLabel.text = "Nice job, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         } else {
-            answerHeaderLabel.text = "Wrong!"
-            answerHeaderLabel.textColor = hexStringToUIColor("#FFA269")
-            answerLabel.text = "Actually, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#FFA269")
+            feedbackHeaderLabel.text = "Wrong!"
+            feedbackBodyLabel.text = "Actually, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         }
 
         continueGameWithDelay(seconds: 2)
@@ -136,8 +162,8 @@ extension ViewController {
             option4Button.hidden = false
             playAgainButton.hidden = true
             questionLabel.hidden = false
-            answerHeaderLabel.hidden = true
-            answerLabel.hidden = true
+            feedbackHeaderLabel.hidden = true
+            feedbackBodyLabel.hidden = true
         case .playerDidAnswerQuestion:
             option1Button.hidden = true
             option2Button.hidden = true
@@ -149,14 +175,17 @@ extension ViewController {
             option3Button.setTitle(nil, forState: .Normal)
             option4Button.setTitle(nil, forState: .Normal)
             questionLabel.hidden = true
-            answerHeaderLabel.hidden = false
-            answerLabel.hidden = false
+            feedbackHeaderLabel.hidden = false
+            feedbackBodyLabel.hidden = false
         case .gameOver:
             option1Button.hidden = true
             option2Button.hidden = true
             option3Button.hidden = true
             option4Button.hidden = true
             playAgainButton.hidden = false
+            questionLabel.hidden = true
+            feedbackHeaderLabel.hidden = false
+            feedbackBodyLabel.hidden = false
         }
     }
 
