@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         print("viewWillLayoutSubviews() | ViewController.swift")
 
         // Adds gradient layer for improved text readability
-        gradientLayer.colors = [(hexStringToUIColor("#000000", alpha: 0.9)).CGColor, UIColor.clearColor().CGColor]
-        gradientLayer.locations = [0.0, 0.3]
+        gradientLayer.colors = [(hexStringToUIColor("#000000")).CGColor, (hexStringToUIColor("#000000", alpha: 0.8)).CGColor, UIColor.clearColor().CGColor]
+        gradientLayer.locations = [0.0, 0.1, 0.3]
         gradientLayer.frame = self.view.bounds
         gradient.layer.addSublayer(gradientLayer)
     }
@@ -71,7 +71,6 @@ class ViewController: UIViewController {
 
     func displayQuestion() {
         print("displayQuestion() | ViewController.swift")
-
 
         questionLabel.text = gameQuestions.first?.question
         option1Button.setTitle(gameQuestions.first?.option1, forState: .Normal)
