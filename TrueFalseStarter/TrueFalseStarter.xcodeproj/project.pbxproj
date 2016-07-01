@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F3DF2281D24B8F100E3A4FA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6F3DF2271D24B8F100E3A4FA /* Images */; };
+		6F41D6451D27111500CBE7F2 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 6F41D6441D27111500CBE7F2 /* Sounds */; };
 		6F5D8BA51D24495D009735EB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D8BA41D24495D009735EB /* Game.swift */; };
 		6F5D8BA71D244D81009735EB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5D8BA61D244D81009735EB /* Sound.swift */; };
 		6F634B711D234E1300EFD81A /* GenericHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F634B701D234E1300EFD81A /* GenericHelperFunctions.swift */; };
@@ -18,11 +19,11 @@
 		97093D411C913506001275BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D3F1C913506001275BC /* Main.storyboard */; };
 		97093D431C913506001275BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97093D421C913506001275BC /* Assets.xcassets */; };
 		97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D441C913506001275BC /* LaunchScreen.storyboard */; };
-		97093D531C932116001275BC /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 97093D521C932116001275BC /* GameSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6F3DF2271D24B8F100E3A4FA /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		6F41D6441D27111500CBE7F2 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		6F5D8BA41D24495D009735EB /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6F5D8BA61D244D81009735EB /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		6F634B701D234E1300EFD81A /* GenericHelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHelperFunctions.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		97093D421C913506001275BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97093D451C913506001275BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97093D471C913506001275BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97093D521C932116001275BC /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +68,7 @@
 		97093D3A1C913506001275BC /* TrueFalseStarter */ = {
 			isa = PBXGroup;
 			children = (
+				6F41D6441D27111500CBE7F2 /* Sounds */,
 				6F3DF2271D24B8F100E3A4FA /* Images */,
 				97093D3B1C913506001275BC /* AppDelegate.swift */,
 				97093D3D1C913506001275BC /* ViewController.swift */,
@@ -80,7 +81,6 @@
 				97093D421C913506001275BC /* Assets.xcassets */,
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
 				97093D471C913506001275BC /* Info.plist */,
-				97093D521C932116001275BC /* GameSound.wav */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -143,8 +143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F41D6451D27111500CBE7F2 /* Sounds in Resources */,
 				6F3DF2281D24B8F100E3A4FA /* Images in Resources */,
-				97093D531C932116001275BC /* GameSound.wav in Resources */,
 				97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */,
 				97093D431C913506001275BC /* Assets.xcassets in Resources */,
 				97093D411C913506001275BC /* Main.storyboard in Resources */,

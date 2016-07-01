@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         questionLabel.enabled = true // TODO: Delete and change initial state in IB
-        loadGameStartSound()
+        loadGameSounds()
         createGame()
         playGame()
     }
@@ -116,6 +116,7 @@ class ViewController: UIViewController {
         }
 
         configureUIForGameState(.gameOver)
+        playMainGameStartSound()
         print("GAME OVER\n")
     }
 

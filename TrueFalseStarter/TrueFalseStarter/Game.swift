@@ -17,23 +17,23 @@ func createGame() {
     correctQuestions = 0
 
     createQuestionGroup()
-    playGameStartSound()
+    playMainGameStartSound()
 
 }
 
 func checkSubmittedAnswer(submittedAnswer: String) -> (success: Bool, correctAnswer: String) {
     print("checkSubmittedAnswer() | Game.swift")
 
-    //numberOfQuestionsAsked += 1
-
     let correctAnswer = (gameQuestions.first?.answer)!
 
     if submittedAnswer == correctAnswer {
         correctQuestions += 1
         gameQuestions.removeFirst()
+        playCorrectAnswerSound()
         return (true, correctAnswer)
     } else {
         gameQuestions.removeFirst()
+        playWrongAnswerSound()
         return (false, correctAnswer)
     }
 
