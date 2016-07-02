@@ -17,15 +17,18 @@ extension ViewController {
 
     func startTimer() {
         timerLabel.text = "\(timePerQuestion) sec"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        timerLabel.textColor = UIColor.whiteColor()
+
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
     }
 
-    func countDown() {
+    func countdown() {
         totalGameTime += 1
         remainingTime -= 1
         timerLabel.text = "\(remainingTime) sec"
 
         if remainingTime <= 5 {
+            playCountdownSound()
             timerLabel.textColor = UIColor.redColor()
         }
 

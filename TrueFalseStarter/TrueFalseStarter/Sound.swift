@@ -11,6 +11,7 @@ import AudioToolbox
 var startAndGameOverSound: SystemSoundID = 0
 var correctAnswerSound: SystemSoundID = 0
 var wrongAnswerSound: SystemSoundID = 0
+var countdownSound: SystemSoundID = 0
 
 
 func loadGameSounds() {
@@ -25,6 +26,10 @@ func loadGameSounds() {
     let pathToWrongAnswerSoundFile = NSBundle.mainBundle().pathForResource("Sounds/142608__autistic-lucario__error", ofType: "wav")
     let wrongAnswerSoundURL = NSURL(fileURLWithPath: pathToWrongAnswerSoundFile!)
     AudioServicesCreateSystemSoundID(wrongAnswerSoundURL, &wrongAnswerSound)
+
+    let pathToCountdownSoundFile = NSBundle.mainBundle().pathForResource("Sounds/263133__pan14__tone-beep", ofType: "wav")
+    let countdownSoundURL = NSURL(fileURLWithPath: pathToCountdownSoundFile!)
+    AudioServicesCreateSystemSoundID(countdownSoundURL, &countdownSound)
 }
 
 func playStartAndGameOverSound() {
@@ -37,5 +42,9 @@ func playCorrectAnswerSound() {
 
 func playWrongAnswerSound() {
     AudioServicesPlaySystemSound(wrongAnswerSound)
+}
+
+func playCountdownSound() {
+    AudioServicesPlaySystemSound(countdownSound)
 }
 
