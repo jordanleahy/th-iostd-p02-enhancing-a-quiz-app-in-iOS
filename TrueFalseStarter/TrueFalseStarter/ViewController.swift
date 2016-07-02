@@ -39,7 +39,6 @@ class ViewController: UIViewController {
 
 
     override func viewDidLoad() {
-        questionLabel.enabled = true // TODO: Delete and change initial state in IB
         loadGameSounds()
         createGame()
         playGame()
@@ -126,7 +125,7 @@ class ViewController: UIViewController {
         guard sender != nil else {
             feedbackHeaderLabel.textColor = hexStringToUIColor("#FFA269")
             feedbackHeaderLabel.text = "You ran out of time..."
-            feedbackBodyLabel.text = "This is \(checkSubmittedAnswer("").correctAnswer)!"
+            feedbackBodyLabel.text = "This is \(checkSubmittedAnswer("").correctAnswer)"
 
             continueGameWithDelay(seconds: 2, purpose: "checkAnswer")
             configureUIForGameState(.playerDidAnswerQuestion)
