@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         // Adds gradient layer for improved text readability
-        gradientLayer.colors = [(hexStringToUIColor("#000000")).CGColor, (hexStringToUIColor("#000000", alpha: 0.8)).CGColor, UIColor.clearColor().CGColor]
+        gradientLayer.colors = [(hexStringToUIColor("#000000")).CGColor, (hexStringToUIColor("#000000", alpha: 0.7)).CGColor, UIColor.clearColor().CGColor]
         gradientLayer.locations = [0.0, 0.1, 0.3]
         gradientLayer.frame = self.view.bounds
         gradient.layer.addSublayer(gradientLayer)
