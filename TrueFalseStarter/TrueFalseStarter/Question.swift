@@ -18,9 +18,9 @@ struct Question {
     let image: String
 }
 
+
 // Returns question object
 func createQuestion(questionFromDictionary: [String: String]) -> Question {
-
     let question = questionFromDictionary["Question"]!
     let option1 = questionFromDictionary["Option1"]!
     let option2 = questionFromDictionary["Option2"]!
@@ -45,12 +45,6 @@ func createQuestionGroup() {
     for index in randomQuestionsIndicies {
         questionGroup.append(createQuestion(trivia[index]))
     }
-
-    print("----------")
-    for question in questionGroup {
-        print(question)
-    }
-    print("----------")
 
     gameQuestions = questionGroup
 }

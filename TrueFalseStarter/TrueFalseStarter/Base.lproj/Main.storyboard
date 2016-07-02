@@ -40,7 +40,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 sec " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOg-91-Lm4" userLabel="Countdown Label ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 sec " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOg-91-Lm4" userLabel="Timer Label">
                                         <rect key="frame" x="271" y="4" width="39" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,7 +256,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="backgroundImage" destination="HHr-DV-i8Z" id="O1w-rp-X52"/>
-                        <outlet property="counterLabel" destination="FOg-91-Lm4" id="pE4-j6-yyZ"/>
                         <outlet property="feedbackBodyLabel" destination="jPm-05-ieK" id="bap-Nw-17v"/>
                         <outlet property="feedbackHeaderLabel" destination="Usr-Ii-2X4" id="2pP-8S-9Ss"/>
                         <outlet property="gradient" destination="DMc-CU-LQh" id="zM5-Rk-bEx"/>
@@ -267,6 +266,7 @@
                         <outlet property="playAgainButton" destination="K17-uy-MvB" id="0Bx-Cm-ye0"/>
                         <outlet property="progressLabel" destination="kMa-Tb-UN1" id="62Z-z3-k06"/>
                         <outlet property="questionLabel" destination="I3V-ih-1Ky" id="cNa-Ke-csX"/>
+                        <outlet property="timerLabel" destination="FOg-91-Lm4" id="jVr-cP-lEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

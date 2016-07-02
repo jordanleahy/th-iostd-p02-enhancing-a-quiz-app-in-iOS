@@ -8,16 +8,15 @@
 
 import AudioToolbox
 
-var gameSound: SystemSoundID = 0
+var startAndGameOverSound: SystemSoundID = 0
 var correctAnswerSound: SystemSoundID = 0
 var wrongAnswerSound: SystemSoundID = 0
 
-func loadGameSounds() {
-    print("-->> loadGameSounds() | Sound.swift")
 
-    let pathToGameStartSoundFile = NSBundle.mainBundle().pathForResource("Sounds/GameSound", ofType: "wav")
-    let gameStartSoundURL = NSURL(fileURLWithPath: pathToGameStartSoundFile!)
-    AudioServicesCreateSystemSoundID(gameStartSoundURL, &gameSound)
+func loadGameSounds() {
+    let pathToStartAndGameOverSoundFile = NSBundle.mainBundle().pathForResource("Sounds/GameSound", ofType: "wav")
+    let startAndGameOverSoundURL = NSURL(fileURLWithPath: pathToStartAndGameOverSoundFile!)
+    AudioServicesCreateSystemSoundID(startAndGameOverSoundURL, &startAndGameOverSound)
 
     let pathToCorrectAnswerSoundFile = NSBundle.mainBundle().pathForResource("Sounds/264981__renatalmar__sfx-magic", ofType: "wav")
     let correctAnswerSoundURL = NSURL(fileURLWithPath: pathToCorrectAnswerSoundFile!)
@@ -26,25 +25,17 @@ func loadGameSounds() {
     let pathToWrongAnswerSoundFile = NSBundle.mainBundle().pathForResource("Sounds/142608__autistic-lucario__error", ofType: "wav")
     let wrongAnswerSoundURL = NSURL(fileURLWithPath: pathToWrongAnswerSoundFile!)
     AudioServicesCreateSystemSoundID(wrongAnswerSoundURL, &wrongAnswerSound)
-
 }
 
-func playMainGameStartSound() {
-    print("-->> playMainGameStartSound() | Sound.swift")
-
-    AudioServicesPlaySystemSound(gameSound)
+func playStartAndGameOverSound() {
+    AudioServicesPlaySystemSound(startAndGameOverSound)
 }
 
 func playCorrectAnswerSound() {
-    print(correctAnswerSound)
-    print("-->> playCorrectAnswerSound() | Sound.swift")
-
     AudioServicesPlaySystemSound(correctAnswerSound)
 }
 
 func playWrongAnswerSound() {
-    print("-->> playWrongAnswerSound() | Sound.swift")
-
     AudioServicesPlaySystemSound(wrongAnswerSound)
 }
 

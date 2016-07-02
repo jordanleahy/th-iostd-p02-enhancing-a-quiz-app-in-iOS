@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
     // Text
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var feedbackHeaderLabel: UILabel!
     @IBOutlet weak var feedbackBodyLabel: UILabel!
@@ -46,8 +46,6 @@ class ViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        print("viewWillLayoutSubviews() | ViewController.swift")
-
         // Adds gradient layer for improved text readability
         gradientLayer.colors = [(hexStringToUIColor("#000000")).CGColor, (hexStringToUIColor("#000000", alpha: 0.8)).CGColor, UIColor.clearColor().CGColor]
         gradientLayer.locations = [0.0, 0.1, 0.3]
@@ -55,24 +53,19 @@ class ViewController: UIViewController {
         gradient.layer.addSublayer(gradientLayer)
     }
 
-
     func playGame() {
-        print("playGame() | ViewController.swift")
-
         guard numberOfQuestionsAsked != questionsPerRound else {
             progressLabel.text = "Game Over"
             displayScore()
             return
         }
-            numberOfQuestionsAsked += 1
-            progressLabel.text = "Question \(numberOfQuestionsAsked) of \(questionsPerRound)"
+        numberOfQuestionsAsked += 1
+        progressLabel.text = "Question \(numberOfQuestionsAsked) of \(questionsPerRound)"
 
-            displayQuestion()
+        displayQuestion()
     }
 
     func displayQuestion() {
-        print("displayQuestion() | ViewController.swift")
-
         questionLabel.text = gameQuestions.first?.question
         option1Button.setTitle(gameQuestions.first?.option1, forState: .Normal)
         option2Button.setTitle(gameQuestions.first?.option2, forState: .Normal)
@@ -81,7 +74,8 @@ class ViewController: UIViewController {
         backgroundImage.image = UIImage(named: "Images/\((gameQuestions.first?.image)!)")
 
         configureUIForGameState(.playeDidReceiveQuestion)
-        continueGameWithDelay(seconds: 5, sender: "displayQuestion")
+        startTimer()
+        continueGameWithDelay(seconds: 4, purpose: "Delay display of answer option buttons")
 
     }
 
@@ -91,7 +85,9 @@ class ViewController: UIViewController {
     }
 
     func displayScore() {
-        print("displayScore() | ViewController.swift")
+
+        timerLabel.text = "Total Time \(totalGameTime) sec"
+        timerLabel.textColor = UIColor.whiteColor()
 
         let numberOfQuestionsAnswered = Double(questionsPerRound)
         let numberOfCorrectAnswers = Double(correctQuestions)
@@ -119,16 +115,26 @@ class ViewController: UIViewController {
         }
 
         configureUIForGameState(.gameOver)
-        playMainGameStartSound()
-        print("GAME OVER\n")
+        playStartAndGameOverSound()
     }
 
-    // TODO: Refactor?
-    @IBAction func checkAnswer(sender: UIButton) {
-        print("checkAnswer() | ViewController.swift")
 
-        let submittedAnswer = sender.currentTitle!
-        let resultFromCheckedSubmittedAnswer = checkSubmittedAnswer(submittedAnswer)
+    // TODO: Refactor?
+    @IBAction func checkAnswer(sender: UIButton?) {
+        stopTimer()
+
+        guard sender != nil else {
+            feedbackHeaderLabel.textColor = hexStringToUIColor("#FFA269")
+            feedbackHeaderLabel.text = "You ran out of time..."
+            feedbackBodyLabel.text = "This is \(checkSubmittedAnswer("").correctAnswer)!"
+
+            continueGameWithDelay(seconds: 2, purpose: "checkAnswer")
+            configureUIForGameState(.playerDidAnswerQuestion)
+
+            return
+        }
+
+        let resultFromCheckedSubmittedAnswer = checkSubmittedAnswer(sender!.currentTitle!)
 
         if resultFromCheckedSubmittedAnswer.success {
             feedbackHeaderLabel.textColor = hexStringToUIColor("#0C7996")
@@ -140,16 +146,13 @@ class ViewController: UIViewController {
             feedbackBodyLabel.text = "Actually, this is \(resultFromCheckedSubmittedAnswer.correctAnswer)"
         }
 
-        continueGameWithDelay(seconds: 2, sender: "checkAnswer")
+        continueGameWithDelay(seconds: 2)
         configureUIForGameState(.playerDidAnswerQuestion)
     }
 
     @IBAction func playAgain() {
-        print("playAgain() | ViewController.swift")
-
         createGame()
         playGame()
-        //displayQuestion()
     }
 
 }
@@ -159,11 +162,8 @@ class ViewController: UIViewController {
 
 extension ViewController {
 
-    // Configures UI elements
+    // Set UI elements' state for current game state
     func configureUIForGameState(gameState: GameStates) {
-        print("configureUIForGameState(.\(gameState)) | ViewController.swift")
-
-        // Set UI elements' state for current game state
         switch gameState {
         case .playeDidReceiveQuestion:
             questionLabel.hidden = false
@@ -209,8 +209,8 @@ extension ViewController {
     }
 
     // Delays execution 'to create smoother flow'
-    func continueGameWithDelay(seconds seconds: Int, sender: String) {
-        print("continueGameWithDelay() | ViewController.swift")
+    // Source: Treehouse starter code (Added parameter for purpose to original code)
+    func continueGameWithDelay(seconds seconds: Int, purpose: String = "Default") {
 
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
@@ -220,14 +220,13 @@ extension ViewController {
 
         // Executes the nextRound method at the dispatch time on the main queue
         dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            if sender == "checkAnswer" {
-                self.playGame()
-            }
-            if sender == "displayQuestion" {
+            if purpose == "Delay display of answer option buttons" {
                 self.configureUIForGameState(.playerWillAnswerQuestion)
+            } else {
+                self.playGame()
             }
         }
     }
-    
+
 }
 

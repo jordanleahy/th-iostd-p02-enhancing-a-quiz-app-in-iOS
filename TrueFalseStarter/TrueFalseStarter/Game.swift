@@ -6,24 +6,24 @@
 //  Copyright © 2016 Treehouse. All rights reserved.
 //
 
-let questionsPerRound = 4
+// Game settings
+let questionsPerRound = 5
+let timePerQuestion = 15
+
+// Game progress
 var numberOfQuestionsAsked = 0
 var correctQuestions = 0
 
-func createGame() {
-    print("createGame() | Game.swift")
 
+func createGame() {
     numberOfQuestionsAsked = 0
     correctQuestions = 0
 
     createQuestionGroup()
-    playMainGameStartSound()
-
+    playStartAndGameOverSound()
 }
 
 func checkSubmittedAnswer(submittedAnswer: String) -> (success: Bool, correctAnswer: String) {
-    print("checkSubmittedAnswer() | Game.swift")
-
     let correctAnswer = (gameQuestions.first?.answer)!
 
     if submittedAnswer == correctAnswer {
@@ -36,6 +36,5 @@ func checkSubmittedAnswer(submittedAnswer: String) -> (success: Bool, correctAns
         playWrongAnswerSound()
         return (false, correctAnswer)
     }
-
 }
 
