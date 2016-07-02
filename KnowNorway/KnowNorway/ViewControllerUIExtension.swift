@@ -108,11 +108,11 @@ extension ViewController {
         case .defaultColor:
             return UIColor.whiteColor()
         case .successColor:
-            return hexStringToUIColor("#0C7996")
+            return hexStringToUIColor("#2196F3")
         case .errorColor:
-            return hexStringToUIColor("#FFA269")
+            return hexStringToUIColor("#D50000")
         case .alertColor:
-            return UIColor.redColor()
+            return hexStringToUIColor("#D50000")
         }
     }
 
