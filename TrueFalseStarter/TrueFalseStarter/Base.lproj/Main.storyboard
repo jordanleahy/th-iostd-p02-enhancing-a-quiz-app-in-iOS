@@ -58,12 +58,11 @@
                                     <constraint firstItem="K30-Bf-iEO" firstAttribute="leading" secondItem="tVq-Zr-EHa" secondAttribute="leading" constant="10" id="zlC-qx-1xZ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky" userLabel="Question Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Label is simply dummy text of the printing and text ever since the 1500s, when an unknown printer?" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky" userLabel="Question Label">
                                 <rect key="frame" x="20" y="30" width="560" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="KfK-NE-be4"/>
                                 </constraints>
-                                <string key="text">Lorem Ipsum is simply dummy text of the printing and text ever since the 1500s, when an unknown printer. It has survived not only five centuries?</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,7 +72,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usr-Ii-2X4" userLabel="Answer Header Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usr-Ii-2X4" userLabel="Feedback Header Label">
                                 <rect key="frame" x="20" y="30" width="560" height="31"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
                                 <color key="textColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,7 +104,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZ1-4L-uXg"/>
+                                    <action selector="answerButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jAN-ax-QJY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRJ-2k-RSl" userLabel="Option 3 Button">
@@ -128,7 +127,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iGr-l2-AKM"/>
+                                    <action selector="answerButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="smy-Qo-Qai"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f" userLabel="Option 2 Button">
@@ -151,7 +150,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qfk-Z2-crr"/>
+                                    <action selector="answerButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9P1-DT-hwC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-MS-ECi" userLabel="Option 1 Button">
@@ -174,7 +173,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pHS-se-fli"/>
+                                    <action selector="answerButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wxs-tF-mTg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K17-uy-MvB">
@@ -194,7 +193,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="klz-B2-JAN"/>
+                                    <action selector="playAgainButtonWasPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="zIu-8f-2YI"/>
                                 </connections>
                             </button>
                         </subviews>

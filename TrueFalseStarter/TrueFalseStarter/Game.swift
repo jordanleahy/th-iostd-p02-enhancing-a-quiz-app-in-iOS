@@ -8,7 +8,9 @@
 
 // Game settings
 let questionsPerRound = 5
-let timePerQuestion = 15
+let timePerQuestion = 15  // sec
+let delayDisplayOfAnswerOptionButtons = 4  // sec
+let delayDisplayOfNextScreen = 2  // sec
 
 // Game progress
 var numberOfQuestionsAsked = 0
